@@ -20,4 +20,16 @@ class User < ActiveRecord::Base
   # パスワードが正しいときに、ユーザーを返すauthenticateメソッドを提供する
   has_secure_password
 
+  # 更新時のみ有効：profileが入力されていた場合、300文字以内であること
+  validates :profile, absence: true, 
+                      on: :create
+  validates :profile, allow_blank: true, length: { maximum: 300 },
+                      on: :update
+
+  # 更新時のみ有効：areaが入力されていた場合、30文字以内であること
+  validates :area, absence: true, 
+                   on: :create
+  validates :area, allow_blank: true, length: { maximum: 30 },
+                   on: :update
+
 end

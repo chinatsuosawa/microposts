@@ -2,3 +2,24 @@
   <%= gravatar_for @user %>
   <%= @user.name %>
 </h1>
+
+<div class="row">
+  <div class="col-md-7 col-md-offset-3">
+
+    <% if current_user?(@user) %>
+      <h4><%= content_tag :span, 'e-mail', class: 'label label-info' %></h4>
+      <p><%= @user.email %></p>
+    <% end %>
+
+    <% if @user.area.present? %>
+      <h4><%= content_tag :span, 'area', class: 'label label-info' %></h4>
+      <p><%= @user.area %></p>
+    <% end %>
+
+    <% if @user.profile.present? %>
+      <h4><%= content_tag :span, 'profile', class: 'label label-info' %></h4>
+      <%= simple_format @user.profile %>
+    <% end %>
+
+  </div>
+</div>
