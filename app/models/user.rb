@@ -32,4 +32,7 @@ class User < ActiveRecord::Base
   validates :area, allow_blank: true, length: { maximum: 30 },
                    on: :update
 
+  # それぞれのユーザーは複数の投稿を持つことができる
+  has_many :microposts
+
 end
