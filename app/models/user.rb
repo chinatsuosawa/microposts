@@ -35,4 +35,33 @@ class User < ActiveRecord::Base
   # それぞれのユーザーは複数の投稿を持つことができる
   has_many :microposts
 
+  # ユーザーがフォローしているアカウントを取得（フォロー）
+  has_many :following_relationships, class_name:  "Relationship",
+                                     foreign_key: "follower_id",
+                                     dependent:   :destroy
+  has_many :following_users, through: :following_relationships, source: :followed
+
+  # ユーザーをフォローしているアカウントを取得（フォロワー）
+  has_many :follower_relationships, class_name:  "Relationship",
+                                    foreign_key: "followed_id",
+                                    dependent:   :destroy
+  has_many :follower_users, through: :follower_relationships, source: :follower
+
+
+  # 他のユーザーをフォローする
+  def follow(other_user)
+    following_relationships.find_or_create_by(followed_id: other_user.id)
+  end
+
+  # フォローしているユーザーをアンフォローする
+  def unfollow(other_user)
+    following_relationship = following_relationships.find_by(followed_id: other_user.id)
+    following_relationship.destroy if following_relationship
+  end
+
+  # あるユーザーをフォローしているかどうか？
+  def following?(other_user)
+    following_users.include?(other_user)
+  end
+
 end
