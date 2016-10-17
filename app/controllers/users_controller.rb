@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_params, only: [:show, :edit, :update]
+  before_action :set_params, only: [:show, :edit, :update, :followings, :followers]
   before_action :correct_user, only: [:edit, :update]
 
   def show 
@@ -40,6 +40,20 @@ class UsersController < ApplicationController
       # 保存に失敗した場合は編集画面へ戻す
       render 'edit'
     end
+  end
+  
+  # フォロー一覧取得
+  def followings
+    @title = "Follow users"
+    @users = @user.following_users
+    render 'show_follow'
+  end
+
+  # フォロワー一覧取得
+  def followers
+    @title = "Followes"
+    @users = @user.follower_users
+    render 'show_follow'
   end
 
   private
