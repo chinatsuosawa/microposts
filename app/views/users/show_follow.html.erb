@@ -5,9 +5,11 @@
 
   <div class="col-md-8">
     <%= render 'follow_form' if logged_in? %>
-    <h3><%= @title %> (<%= @users.count %>)</h3>
+    <h3><%= @title %> (<%= @count %>)</h3>
     <ol class="users">
+      <%= page_entries_info @users %>
       <%= render @users %>
+      <%= paginate @users %>
     </ol>
   </div>
 </div>

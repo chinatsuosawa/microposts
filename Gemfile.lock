@@ -47,6 +47,12 @@ GEM
       sass (>= 3.3.4)
     builder (3.2.2)
     byebug (9.0.6)
+    carrierwave (0.11.2)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
+      mimemagic (>= 0.3.0)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.1.x)
@@ -71,6 +77,9 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (1.8.3)
+    kaminari (0.17.0)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
     loofah (2.0.3)
       nokogiri (>= 1.5.9)
     mail (2.6.4)
@@ -78,6 +87,7 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
+    mimemagic (0.3.2)
     mini_portile2 (2.1.0)
     minitest (5.9.1)
     multi_json (1.12.1)
@@ -113,6 +123,7 @@ GEM
     rake (11.3.0)
     rdoc (4.2.2)
       json (~> 1.4)
+    rmagick (2.16.0)
     sass (3.4.22)
     sass-rails (5.0.6)
       railties (>= 4.0.0, < 6)
@@ -153,11 +164,14 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   bootstrap-sass
   byebug
+  carrierwave
   coffee-rails (~> 4.1.0)
   faker
   jbuilder (~> 2.0)
   jquery-rails
+  kaminari
   rails (= 4.2.7.1)
+  rmagick (~> 2.15, >= 2.15.4)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring

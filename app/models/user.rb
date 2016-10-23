@@ -69,4 +69,18 @@ class User < ActiveRecord::Base
     Micropost.where(user_id: following_user_ids + [self.id])
   end
 
+  # お気に入りツイートを取得する
+  has_many :favorites, foreign_key: 'user_id', dependent: :destroy
+  has_many :favorite_microposts, through: :favorites, source: :micropost
+
+  # お気に入り登録する
+  def favorite(micropost)
+      favorites.find_or_create_by(micropost_id: micropost.id)
+  end
+    
+  # お気に入り解除する
+  def unfavorite(micropost)
+      favorite = favorites.find_by(micropost_id: micropost.id)
+      favorite.destroy if favorite
+    end
 end

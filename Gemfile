@@ -14,8 +14,19 @@ gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
+# kaminari(Pagination gem)
+# https://github.com/amatsuda/kaminari
+gem 'kaminari'
+
+# CarrierWave(Picture uploader gem)
+# https://github.com/carrierwaveuploader/carrierwave
+# 
 
 gem 'faker'
+
+gem 'carrierwave'
+#gem 'mini_magick'
+gem 'rmagick', '~> 2.15', '>= 2.15.4'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
