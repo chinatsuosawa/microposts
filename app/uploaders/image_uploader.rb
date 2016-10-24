@@ -7,8 +7,16 @@ class ImageUploader < CarrierWave::Uploader::Base
   # include CarrierWave::MiniMagick
 
   # Choose what kind of storage to use for this uploader:
-  storage :file
+  if Rails.env.production?
+    include Cloudinary::CarrierWave
+  else
+    storage :file
+  end
   # storage :fog
+
+  def public_id
+    model.id
+  end
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
@@ -27,7 +35,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Process files as they are uploaded:
   # process :scale => [200, 300]
   # 画像の上限を700pxにする
-  process :resize_to_limit => [300, 300]
+  process :resize_to_limit => [100, 100, "Center"]
 
   # 保存形式をJPGにする
   process :convert => 'jpg'
