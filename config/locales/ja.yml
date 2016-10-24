@@ -202,7 +202,6 @@ ja:
     pm: 午後
   attributes:
   #  user:
-  #    name: 名前
-  #    age: 年齢
-
-  #site_title: サイトのタイトル
+  #  name: 名前
+  #  age: 年齢
+  #  site_title: サイトのタイトル

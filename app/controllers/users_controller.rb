@@ -55,7 +55,7 @@ class UsersController < ApplicationController
 
   # フォロワー一覧取得
   def followers
-    @title = "Followes"
+    @title = "Followers"
     followers = @user.follower_users
     @count = followers.count
     @users = followers.page(params[:page])
