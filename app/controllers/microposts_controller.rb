@@ -25,6 +25,7 @@ class MicropostsController < ApplicationController
     original = Micropost.find(params[:id])
     retweet = current_user.microposts.build(original: original.id)
     retweet.content = "＃ #{original.user.name}さんのリツイート　\n #{original.content}"
+    retweet.image = original.image
     if retweet.save
       flash[:success] = "リツイートしました"
       redirect_to current_user

@@ -34,8 +34,8 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Process files as they are uploaded:
   # process :scale => [200, 300]
-  # 画像の上限を700pxにする
-  process :resize_to_limit => [100, 100, "Center"]
+  # 画像の上限を100pxにする
+  process :resize_to_limit => [100, 100]
 
   # 保存形式をJPGにする
   process :convert => 'jpg'
@@ -60,16 +60,16 @@ class ImageUploader < CarrierWave::Uploader::Base
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   # 拡張子が同じでないとGIFをJPGとかにコンバートできないので、ファイル名を変更
   def filename
-  # "something.jpg" if original_filename
+    "something.jpg" if original_filename
     super.chomp(File.extname(super)) + '.jpg' if original_filename.present?
   end
 
   # ファイル名は日本語が入ってくると嫌なので、下記のようにしてみてもいい。
   # 日付(20131001.jpgみたいなファイル名)で保存する
-  def filename
-    time = Time.now
-    name = time.strftime('%Y%m%d%H%M%S') + '.jpg'
-    name.downcase
-  end
+  # def filename
+  #   time = Time.now
+  #   name = time.strftime('%Y%m%d%H%M%S') + '.jpg'
+  #   name.downcase
+  # end
 
 end
