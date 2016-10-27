@@ -20,9 +20,9 @@ print "."
   email = "example-#{n+1}@railstutorial.org"
   password = "password"
   User.create!(name: name,
-              email: email,
-              password:              password,
-              password_confirmation: password)
+               email: email,
+               password:              password,
+               password_confirmation: password)
   print "."
 end
 puts "\n-> User_seeds OK!!"
@@ -31,8 +31,8 @@ puts "\n-> User_seeds OK!!"
 users = User.order(:created_at).take(6)
 50.times do
   content = Faker::Lorem.sentence(5)
+image = nil
   users.each { |user| user.microposts.create!(content: content) }
-  image = Faker::Lorem.
   print "."
 end
 puts "\n-> Micropost_seeds OK!!"
