@@ -15,7 +15,8 @@ class ImageUploader < CarrierWave::Uploader::Base
   # storage :fog
 
   def public_id
-    model.id
+#    model.id
+    Micropost.find(params[:id])
   end
 
   # Override the directory where uploaded files will be stored.
