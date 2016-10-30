@@ -16,7 +16,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   def public_id
 #    model.id
-    return Micropost.id
+    return micropost.id
   end
 
   # Override the directory where uploaded files will be stored.
