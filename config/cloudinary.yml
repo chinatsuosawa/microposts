@@ -1,0 +1,21 @@
+---
+development:
+  cloud_name: hy6nuv6uv
+  api_key: '659561484477374'
+  api_secret: J7_11o_f-YYSErM-dAvRyHJ_f94
+  enhance_image_tag: true
+  static_image_support: false
+
+production:
+  cloud_name: hy6nuv6uv
+  api_key: '659561484477374'
+  api_secret: J7_11o_f-YYSErM-dAvRyHJ_f94
+  enhance_image_tag: true
+  static_image_support: true
+
+test:
+  cloud_name: hy6nuv6uv
+  api_key: '659561484477374'
+  api_secret: J7_11o_f-YYSErM-dAvRyHJ_f94
+  enhance_image_tag: true
+  static_image_support: false
