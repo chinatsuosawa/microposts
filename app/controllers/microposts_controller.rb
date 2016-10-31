@@ -25,7 +25,7 @@ class MicropostsController < ApplicationController
     original = Micropost.find(params[:id])
     retweet = current_user.microposts.build(original: original.id)
     retweet.content = "＃ #{original.user.name}さんのリツイート　\n #{original.content}"
-    retweet.image = original.image
+    retweet.original_image = original.image
     if retweet.save
       flash[:success] = "リツイートしました"
       redirect_to current_user
@@ -36,6 +36,6 @@ class MicropostsController < ApplicationController
 
   private
   def micropost_params
-    params.require(:micropost).permit(:content, :image)
+    params.require(:micropost).permit(:content, :image, :original_image)
   end
 end
