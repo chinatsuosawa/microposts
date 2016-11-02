@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_params, only: [:show, :edit, :update, :followings, :followers]
+  before_action :set_params, only: [:show, :edit, :update, :followings, :followers, :favorites]
   before_action :correct_user, only: [:edit, :update]
 
   def show
@@ -66,7 +66,7 @@ class UsersController < ApplicationController
   def favorites
     @title = 'Favorites'
     @count = @user.favorite_microposts.count
-    @microposts = @user.favorite_microposts
+    @microposts = @user.favorite_microposts.page(params[:page])
     render 'show'
   end
 
